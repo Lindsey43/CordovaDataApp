@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>IOS App</title>
+    </head>
+    <body>
+        <div class="wrapper">
+		<!-- container for all pages -->
+		
+		<section data-role="page" id="people-list">
+			<h2>People <button class="btnAdd">ADD</button></h2>
+			<p class="details">
+			Here are all the people for which you buy gifts.
+			</p>
+			<ul data-role="listview" id="allfriends">
+
+			</ul>
+		</section>
+		
+		<section data-role="page" id="occasion-list"  style="display: none">
+			<h2>Occasions <button class="btnAdd">+</button></h2>
+			<p class="details">
+			Here is the list of occasions when you buy gifts.
+			</p>
+			<ul data-role="listview">
+				<!-- 
+				list of items to be dynamically added 
+				single-tap to add gift for occasion through gifts-for-occasion page
+				double-tap to remove occasion
+				-->
+      <li data-ref="1">List Item 1</li>
+      <li data-ref="2">List Item 2</li>
+      <li data-ref="3">List Item 3</li>
+      <li data-ref="4">List Item 4</li>
+      <li data-ref="5">List Item 5</li>
+      <li data-ref="6">List Item 6</li>
+ 
+			</ul>
+		</section>
+		
+		<section data-role="page" id="gifts-for-person" style="display: none">
+			<h2>Gift Ideas <button class="btnAdd" id="addperson">+</button></h2>
+			<p class="details">
+			Here are all the gifts ideas for <span data-dataref="0" id="personName"></span> for all occasions.
+			</p>
+			<ul data-role="listview" id="peoplegifts">
+				<!-- 
+				list of items to be dynamically added 
+				single-tap gift idea to toggle purchased state for gift
+ 				double-tap gift idea to remove from list
+				-->
+                <li>Steve - PS3</li>
+                <li>Gerry - XBOX</li>
+                <li>Mike  - Bike</li>
+			</ul>
+		</section>
+		
+		<section data-role="page" id="gifts-for-occasion"  style="display: none"> 
+			<h2>Gift Ideas <button class="btnAdd">&nbsp;</button></h2>
+			<p class="details">
+			Here are all the gift ideas for <span id="personName">OCCASION</span> for all people.
+			</p>
+			<ul data-role="listview" id="giftList">
+				<!-- 
+				list of items to be dynamically added 
+				single-tap gift idea to toggle purchased state for gift
+				double-tap gift idea to remove from list
+				-->
+                
+			</ul>
+		</section>
+	</div>
+	
+	<!-- always display the overlay between a page and modal -->
+	<div data-role="overlay">&nbsp;</div>
+	
+	<!-- modal for adding an entry to person or occasion table -->
+	<div data-role="modal" id="add-person-occasion">
+		<h3>Title (new person | occasion)</h3>
+		<form>
+			<div class="formBox">
+				<input type="text" id="new-per-occ" value="" placeholder="" class=""/>
+			</div>
+			<div class="formBox">
+				<input type="button" class="btnCancel" value="CANCEL" />
+				<input type="button" class="btnSave" value="SAVE" />
+			</div>
+		</form>	
+	</div>
+	
+	<!-- modal for adding an entry to gift idea table. Requires a person or occasion plus the idea -->
+	<div data-role="modal" id="add-gift">
+		<h3>Title (new gift for person | occasion)</h3>
+		<form>
+			<div class="formBox">
+				<select id="list-per-occ">
+					<option value="0">Choose one</option>
+					<!-- list of options built from person list or occasion list -->
+				</select>
+			</div>
+			<div class="formBox">
+				<input type="text" id="new-idea" value="" placeholder="" class=""/>
+			</div>
+			<div class="formBox">
+				<input type="button" class="btnCancel" value="CANCEL" />
+				<input type="button" class="btnSave" value="SAVE" />
+			</div>
+		</form>	
+	</div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/Occasions.js"></script>
+    </body>
+</html>
