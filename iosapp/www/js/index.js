@@ -138,7 +138,7 @@ function checkDB(){
                                         console.info( err.message);
                                     });
 									
-                    trans.executeSql('INSERT INTO people(person_name) VALUES(?)', ["Steve","Gerry","Mike"], 
+                    trans.executeSql('INSERT INTO people(person_name) VALUES(?)', ["Steve","Gerry"], 
                                     function(tx, rs){
                                         //do something if it works, as desired   
                                         console.info("Added row in stuff");
@@ -161,7 +161,7 @@ function checkDB(){
         //version should be 1.0
         //this won't be the first time running the app
         console.info('Version: ', db.version) ;
-		/*
+		
 		db.transaction(function(trans){
 			trans.executeSql('INSERT INTO people(person_name) VALUES(?)', ["Mark"], 
                                     function(tx, rs){
@@ -180,7 +180,7 @@ function checkDB(){
 		function(){
 		  //success for the transation
 		  //this function is optional
-		});	*/						  
+		});							  
         addNavHandlers();
     }
 }
